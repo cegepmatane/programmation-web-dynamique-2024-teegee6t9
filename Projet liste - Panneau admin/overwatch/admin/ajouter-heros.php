@@ -52,7 +52,7 @@ require 'header.php';
         <textarea name="description_longue" id="description_longue" cols="30" rows="10"></textarea>
     </div>
     <div>
-        <input type="submit" value="enregistrer">
+        <input type="submit" value="Enregistrer">
     </div>
     </form>
 </section>

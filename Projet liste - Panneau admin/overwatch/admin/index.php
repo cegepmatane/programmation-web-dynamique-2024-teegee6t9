@@ -14,7 +14,7 @@ require 'header.php';
 
     <div class="container">
         <h1>Panneau d'administration</h1>
-        <a href="ajouter-film.php" class="bouton">Ajouter</a>
+        <a href="ajouter-heros.php" class="bouton">Ajouter</a>
         <div id="liste-heros"></div>
         <?php
 foreach ($listeHeros as $heros) {
@@ -23,8 +23,8 @@ foreach ($listeHeros as $heros) {
     <div class="heros">
         <div class="images"><img src="../images/mini/<?=$heros['icon']?>" alt="illustration"></div>
         <h3 class="nom"><?=$heros['nom']?></h3>
-        <a href="modifier-film.php" class="bouton2">Modifier</a>
-        <a href="supprimer-film.php" class="bouton2">Supprimer</a>
+        <a href="modifier-heros.php?heros=<?=$heros['id_heros']?>" class="bouton2">Modifier</a>
+        <a href="supprimer-heros.php" class="bouton2">Supprimer</a>
     </div>
 
             <?php
