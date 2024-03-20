@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css"/>
-    <link rel="shortcut icon" href="images/overwatch_icon.png" type="image/x-icon/">
+    <link rel="shortcut icon" href="images/overwatch_icon.png" type="image/x-icon">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -12,6 +12,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="style/liste-heros.css"/>
+    <link rel="stylesheet" href="style/heros.css"/>
     <title><?=$titre?></title>
 </head>
 <body>
@@ -46,7 +48,6 @@
             <div id="recherche-rapide">
                 <form action="recherche-rapide-traitement.php" method="get">
                     <input type="text" name="mot" id="recherche" placeholder="Recherche">
-                    <inupt type="submit" value="Ok">
                 </form>
             </div>
           </li>

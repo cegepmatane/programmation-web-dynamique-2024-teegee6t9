@@ -12,7 +12,7 @@ require 'header.php';
 
 ?>
 
-<link rel="stylesheet" href="style/heros.css"/>
+
 
 <h1>Héros</h1>
 <section id="contenu">
@@ -37,7 +37,7 @@ require 'header.php';
         <p class="description_ultimate"><?=$heros['description_ultimate']?></p>
         <br>
         <h3>Histoire :</h3>
-        <pre><p class="description_longue"><?=$heros['description_longue']?></p></pre>
+        <pre class="description_longue"><?=$heros['description_longue']?></pre>
     </div>
 </section>
 

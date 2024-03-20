@@ -11,15 +11,17 @@ $titre = 'Liste Héros';
 require 'header.php';
 ?>
 
-<head>
-    <link rel="stylesheet" href="style/liste-heros.css"/>
-</head>
-    <div class="container">
+
+
         <h2>Liste des Héros</h2>
         <div id="liste-heros"></div>
+
+
         <?php
+
 foreach ($listeHeros as $heros) {
     ?>
+    <div class="container">
     <div class="section">
         <div class="heros">
             <div class="images"><img src="images/mini/<?=$heros['icon']?>" alt="illustration"></div>
@@ -32,6 +34,8 @@ foreach ($listeHeros as $heros) {
             <a href="heros.php?heros=<?=$heros['id_heros']?>" class="bouton">En savoir plus</a>
         </div>
     </div>
+    </div>
+
 
             <?php
 }

@@ -16,10 +16,10 @@ $titre = "Recherche ";
 require 'header.php';
 
 ?>
-<link rel="stylesheet" href="style/liste-heros.css"/>
 
-<div class="container">
+
         <h1>Overwatch</h1>
+
         <?php
 if (count($resultats) != 0) {
     ?>
@@ -37,19 +37,25 @@ if (count($resultats) != 0) {
         <?php
 foreach ($resultats as $resultats) {
     ?>
-    <div class="heros">
-        <div class="images"><img src="images/mini/<?=$resultats['icon']?>" alt="illustration"></div>
-        <h3 class="nom"><?=$resultats['nom']?></h3>
-        <br>
-        <span class="classe"><?=$resultats['classe']?></span>
-        <span class="pv"><?=$resultats['pv']?></span>
-        <br>
-        <br><p class="description_courte"><?=$resultats['description_courte']?></p>
-    </div>
+        <div class="container">
+        <div class="heros">
+            <div class="images"><img src="images/mini/<?=$resultats['icon']?>" alt="illustration"></div>
+            <h3 class="nom"><?=$resultats['nom']?></h3>
+            <br>
+            <span class="classe"><?=$resultats['classe']?></span>
+            <span class="pv"><?=$resultats['pv']?></span>
+            <br>
+            <br><p class="description_courte"><?=$resultats['description_courte']?></p>
+        </div>
+        </div>
+
+
+
 
             <?php
 
 }
+
 ?>
 
 <?php
