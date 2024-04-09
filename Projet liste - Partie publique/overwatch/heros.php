@@ -16,10 +16,10 @@ require 'header.php';
 
 <h1>Héros</h1>
 <section id="contenu">
-    <div class="heros">
         <h2 class="nom"><a href="liste-heros.php?heros=<?=$heros['id_heros']?>"><?=$heros['nom']?></a></h2>
         <br>
-        <div class="illustration"><img src="images/<?=$heros['grande_illustration']?>" alt="illustration"></div>
+        <div class="illustration"><img src="images/<?=$heros['gi']?>" alt="illustration"></div>
+    <div class="heros">
         <h3>Caractéristiques :</h3>
         <span class="classe"><?=$heros['classe']?></span>
         <br><span class="pv"><?=$heros['pv']?></span>

@@ -6,16 +6,16 @@ require 'header.php';
 $noHeros = $_GET['heros'];
 
 $SQL_HEROS = "SELECT * from heros WHERE id_heros =" . $noHeros;
-$requeteFilm = $basededonnees->prepare($SQL_HEROS);
-$requeteFilm->execute();
-$heros = $requeteFilm->fetch();
+$requeteHeros = $basededonnees->prepare($SQL_HEROS);
+$requeteHeros->execute();
+$heros = $requeteHeros->fetch();
 
 ?>
 <h1>Panneau d'administration</h1>
 
 <section id="contenu">
     <h2>Modifier un héros</h2>
-    <form action="traitement-modifier-heros.php" method="post">
+    <form action="traitement-modifier-heros.php" method="post" enctype="multipart/form-data">
     <div class="champs">
         <label for="nom">Nom</label>
         <input type="text" name="nom" id="nom" value="<?=$heros['nom']?>">
@@ -61,7 +61,22 @@ $heros = $requeteFilm->fetch();
         <textarea name="description_longue" id="description_longue" cols="30" rows="10"><?=$heros['description_longue']?></textarea>
     </div>
     <div>
-        <input type="submit" value="Enregistrer">
-        <input type="hidden" name="id_heros" value="<?=$heros['id_heros']?>">
+        <label for="icon">Icone</label>
+        <input type="file" name="icon"  id="icon"/>
+        <input type="hidden" name="icon-origine" value="<?=$heros['icon']?>">
     </div>
+    <div>
+        <label for="gi">Grande Illustration</label>
+        <input type="file" name="gi"  id="gi"/>
+        <input type="hidden" name="gi-origine" value="<?=$heros['gi']?>">
+    </div>
+
+    <input type="submit" name="imageok" value="Enregistrer">
+
+    <input type="hidden" name="id_heros" value="<?=$heros['id_heros']?>">
+
     </form>
+    </section>
+    <?php
+require '../footer.php';
+?>

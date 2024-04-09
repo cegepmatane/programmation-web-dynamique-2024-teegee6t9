@@ -5,7 +5,7 @@ $resultats = [];
 if (!empty($_GET['mot'])) {
 
     $mot = $_GET['mot'];
-    $SQL_RECHERCHE_RAPIDE = "SELECT * FROM `heros` WHERE nom LIKE '%$mot%' OR  classe LIKE '%$mot%' OR pv LIKE '%$mot%' OR description_courte LIKE '%$mot%' LIKE '%$mot%' ";
+    $SQL_RECHERCHE_RAPIDE = "SELECT * FROM `heros` WHERE nom LIKE '%$mot%' OR  classe LIKE '%$mot%' OR pv LIKE '%$mot%' OR description_courte LIKE '%$mot%' ";
 
     $requeteRechercheRapide = $basededonnees->prepare($SQL_RECHERCHE_RAPIDE);
     $requeteRechercheRapide->execute();
