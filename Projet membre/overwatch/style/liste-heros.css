@@ -1,134 +1,134 @@
-@import url("style.css");
-p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  text-align: justify;
-}
-
-h1 {
-  text-align: center;
-  color: black;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 30px;
-  margin-top: 5%;
-}
-
-h3 {
-  text-align: center;
-  color: black;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 25px;
-  margin-top: 5%;
-}
-
-.nom {
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 1%;
-}
-
-span {
-  margin-right: 13%;
-  padding-left: 22%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-  color: #f1f1f1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-content: space-around;
-}
-
-html {
-  min-height: 100vh;
-}
-
-/* conteneur cartes css */
-.liste-heros {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 80%;
-}
-
-.heros {
-  position: relative;
-  flex-basis: 60%;
-  flex-grow: 1;
-  margin-left: 20%;
-  margin-right: 20%;
-  /* margin-top: 2%; */
-  margin-bottom: 500px;
-  padding-left: 5%;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  padding-right: 5%;
-  background-color: rgba(57, 57, 57, 0.9);
-  border-radius: 10px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-  width: auto;
-}
-
-.heros h1 {
-  text-align: center;
-  margin: 2%;
-}
-.heros h2 {
-  text-align: center;
-  margin: 2%;
-}
-
-.bouton {
-  display: block;
-  text-align: center;
-  margin: 4% auto 0 auto;
-  background-color: #ee6314;
-  color: #222222;
-  text-decoration: none;
-  padding: 15px 32px;
-  font-size: 1em;
-  border: none;
-  border-radius: 5px;
-  width: 50%;
-}
-
-.bouton:hover {
-  background-color: lightgray;
-  color: #ee6314;
-  align-self: center;
-}
-
-.copyright {
-  color: black;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 1.5em;
-}
-
-.section {
-  min-height: 90vh;
-  width: 100%;
-  position: relative;
-  padding-top: 3%;
-}
-
-footer {
-  background-color: #ee6314;
-  box-sizing: border-box;
-  flex-basis: 100%;
-  padding: 10px;
-  display: flex;
-  margin-top: 0%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  position: relative;
-  bottom: 0;
-}
+@import url("style.css");
+p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+  text-align: justify;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 30px;
+  margin-top: 5%;
+}
+
+h3 {
+  text-align: center;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 25px;
+  margin-top: 5%;
+}
+
+.nom {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 1%;
+}
+
+span {
+  margin-right: 13%;
+  padding-left: 22%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #f1f1f1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+html {
+  min-height: 100vh;
+}
+
+/* conteneur cartes css */
+.liste-heros {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.heros {
+  position: relative;
+  flex-basis: 60%;
+  flex-grow: 1;
+  margin-left: 20%;
+  margin-right: 20%;
+  /* margin-top: 2%; */
+  margin-bottom: 500px;
+  padding-left: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-right: 5%;
+  background-color: rgba(57, 57, 57, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  width: auto;
+}
+
+.heros h1 {
+  text-align: center;
+  margin: 2%;
+}
+.heros h2 {
+  text-align: center;
+  margin: 2%;
+}
+
+.bouton {
+  display: block;
+  text-align: center;
+  margin: 4% auto 0 auto;
+  background-color: #ee6314;
+  color: #222222;
+  text-decoration: none;
+  padding: 15px 32px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.bouton:hover {
+  background-color: lightgray;
+  color: #ee6314;
+  align-self: center;
+}
+
+.copyright {
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.5em;
+}
+
+.section {
+  min-height: 90vh;
+  width: 100%;
+  position: relative;
+  padding-top: 3%;
+}
+
+footer {
+  background-color: #ee6314;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  padding: 10px;
+  display: flex;
+  margin-top: 0%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  position: relative;
+  bottom: 0;
+}

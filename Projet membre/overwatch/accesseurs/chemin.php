@@ -1,1 +1,1 @@
-<?= realpath('chemin.php'); ?>
+<?= realpath('chemin.php'); ?>

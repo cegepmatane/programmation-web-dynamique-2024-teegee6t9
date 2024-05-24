@@ -1,5 +1,9 @@
 AuthName "Page d'administration protégée"
+
 AuthType Basic
+
 #AuthUserFile "C:\xampp\htdocs\php\mdp\.htpasswd"
+
 AuthUserFile "/home/tim/public_html/tiweb.timmatane.ca/etudiants/2023/thibaultg/mdp/.htpasswd"
+
 Require valid-user

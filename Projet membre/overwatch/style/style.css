@@ -1,206 +1,319 @@
-/* css rest */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  /* background: linear-gradient( background: rgb(239,99,19);
-        background: linear-gradient(90deg, rgba(239,99,19,1) 0%, rgba(255,255,255,1) 100%); ); */
-  background-image: url("../images/overwatch_background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-around;
-}
-
-h2 {
-  text-align: center;
-  color: #ee6314;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 30px;
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-
-h4 {
-  text-align: center;
-  color: red;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  margin-top: 5%;
-}
-
-/* menu principal*/
-
-nav {
-  width: 100%;
-  z-index: 100;
-  position: -webkit-sticky;
-}
-
-nav ul {
-  list-style-type: none;
-  display: flex;
-}
-
-nav li {
-  flex-grow: 1;
-  position: relative;
-  text-align: center;
-  background-color: white;
-}
-
-nav li a {
-  text-decoration: none;
-  display: block;
-  padding: 20px;
-  color: #ee6314;
-  font-weight: bold;
-  border-bottom: 2px solid #ee6314;
-}
-
-nav li a:hover {
-  color: white;
-  background-color: #ee6314;
-}
-
-.actif {
-  background-color: #ee6314;
-  color: white;
-}
-
-.actif:hover {
-  background-color: white;
-  color: #ee6314;
-}
-
-li form {
-  width: 300px;
-  margin-top: 8px;
-  margin-bottom: 10px;
-  margin-left: 3%;
-}
-
-form {
-  width: 300px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 3%;
-}
-
-form label {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-form input {
-  padding: 11px;
-  padding-right: 30%;
-  margin-right: 10%;
-  margin-left: 5%;
-  margin-top: 2%;
-}
-
-.header {
-  width: 100%;
-}
-
-.logo {
-  width: 10%;
-  padding-top: 10%;
-}
-
-footer {
-  background-color: #ee6314;
-  box-sizing: border-box;
-  flex-basis: 100%;
-  padding: 10px;
-  display: flex;
-  margin-top: 5%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
-.copyright {
-  font-size: 1.5em;
-  font-weight: bold;
-  padding: 1.5%;
-}
-
-/* icon */
-.social-icon li {
-  display: inline-flex;
-  margin: 0px 10px 10px 0px;
-  font-size: 24px;
-  list-style-type: none;
-  /* haut, gauche, bas, droite */
-  margin: 10px 10px 10px 0px;
-  border-radius: 50%;
-  transition: 0.5s;
-}
-
-.social-icon li a {
-  padding: 16px;
-  color: #ee6314;
-  display: block;
-}
-
-.social-icon li:nth-child(1) {
-  background-color: #222222;
-}
-
-.social-icon li:nth-child(1):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
-}
-
-.social-icon li:nth-child(2) {
-  background-color: #ffffff;
-}
-
-.social-icon li:nth-child(2):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(34, 34, 34, 0.5);
-}
-
-.social-icon li:nth-child(3) {
-  background-color: #222222;
-}
-
-.social-icon li:nth-child(3):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
-}
-
-.social-icon li:nth-child(4) {
-  background-color: #ffffff;
-}
-
-.social-icon li:nth-child(4):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(34, 34, 34, 0.5);
-}
-
-.social-icon li:nth-child(5) {
-  background-color: #222222;
-}
-
-.social-icon li:nth-child(5):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
-}
-
-.images {
-  margin-left: 37%;
-}
-
-.imagesHeader {
-  width: 50px;
-  height: 50px;
-}
+/* css rest */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background: linear-gradient( background: rgb(239,99,19);
+        background: linear-gradient(90deg, rgba(239,99,19,1) 0%, rgba(255,255,255,1) 100%); ); */
+  background-image: url("../images/overwatch_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+h2 {
+  text-align: center;
+  color: #ee6314;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 60px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.dashboard {
+  text-align: center;
+  color: #ee6314;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 40px;
+  margin-bottom: 5%;
+}
+
+h4 {
+  text-align: center;
+  color: red;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 5%;
+}
+
+/* menu principal*/
+
+nav {
+  width: 100%;
+  z-index: 100;
+  position: -webkit-sticky;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav li {
+  flex-grow: 1;
+  position: relative;
+  text-align: center;
+  background-color: white;
+}
+
+nav li a {
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  color: #ee6314;
+  font-weight: bold;
+  border-bottom: 2px solid #ee6314;
+}
+
+nav li a:hover {
+  color: white;
+  background-color: #ee6314;
+}
+
+.actif {
+  background-color: #ee6314;
+  color: white;
+}
+
+.actif:hover {
+  background-color: white;
+  color: #ee6314;
+}
+
+li form {
+  width: 300px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  margin-left: 3%;
+}
+
+form {
+  width: 300px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 3%;
+}
+
+form label {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+form input {
+  padding: 11px;
+  padding-right: 30%;
+  margin-right: 10%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.header {
+  width: 100%;
+}
+
+.logo {
+  width: 10%;
+  padding-top: 10%;
+}
+
+footer {
+  background-color: #ee6314;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  padding: 10px;
+  display: flex;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 1.5%;
+}
+
+/* icon */
+.social-icon li {
+  display: inline-flex;
+  margin: 0px 10px 10px 0px;
+  font-size: 24px;
+  list-style-type: none;
+  /* haut, gauche, bas, droite */
+  margin: 10px 10px 10px 0px;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.social-icon li a {
+  padding: 16px;
+  color: #ee6314;
+  display: block;
+}
+
+.social-icon li:nth-child(1) {
+  background-color: #222222;
+}
+
+.social-icon li:nth-child(1):hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
+}
+
+.social-icon li:nth-child(2) {
+  background-color: #ffffff;
+}
+
+.social-icon li:nth-child(2):hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 10px rgba(34, 34, 34, 0.5);
+}
+
+.social-icon li:nth-child(3) {
+  background-color: #222222;
+}
+
+.social-icon li:nth-child(3):hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
+}
+
+.social-icon li:nth-child(4) {
+  background-color: #ffffff;
+}
+
+.social-icon li:nth-child(4):hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 10px rgba(34, 34, 34, 0.5);
+}
+
+.social-icon li:nth-child(5) {
+  background-color: #222222;
+}
+
+.social-icon li:nth-child(5):hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
+}
+
+.images {
+  margin-left: 37%;
+}
+
+.imagesHeader {
+  width: 50px;
+  height: 50px;
+}
+
+table {
+  border-spacing: 0;
+  margin: 0 auto;
+  width: 75%;
+}
+
+th,
+td {
+  border: 1px solid #ee6314;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  background-color: #808080;
+}
+
+th {
+  background-color: #393939;
+  color: #ee6314;
+  line-height: 1.4em;
+  text-transform: uppercase;
+}
+
+caption {
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 3px;
+  padding-bottom: 5%;
+  padding-top: 2%;
+}
+
+.chart-container2 {
+  width: 66%;
+  height: 50%;
+  margin-top: 5%;
+  margin-left: 17%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 2%;
+  padding: 2%;
+}
+
+.chart-container {
+  width: 66%;
+  height: 50%;
+  margin-top: 5%;
+  margin-left: 17%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  padding: 2%;
+  padding-bottom: 6%;
+  padding-right: 4%;
+  padding-left: 4%;
+}
+
+#dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-evenly;
+}
+
+.photos {
+  background-color: #393939;
+  border-radius: 10%;
+  margin: 40px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.photos-liste {
+  height: 91%;
+  background-color: #393939;
+  border-radius: 10%;
+  margin: 40px;
+  padding: 20px;
+  padding-top: 25%;
+  overflow: hidden;
+}
+
+.photos img {
+  width: 100%;
+  height: auto;
+  border: 3px solid #ee6314;
+  transition: all 1s ease;
+  border-radius: 10%;
+}
+
+.photos img:hover {
+  transform: scale(1.05);
+  opacity: 0.7;
+}
+
+.photos .texte {
+  width: 100%;
+  font-size: 1.5em;
+  align-items: center;
+  color: white;
+  margin-top: 2%;
+}
+
+.nom-aleatoire {
+  color: white;
+  margin-bottom: 2%;
+}

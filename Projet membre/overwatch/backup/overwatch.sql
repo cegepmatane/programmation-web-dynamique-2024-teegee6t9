@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 01 mai 2024 à 14:57
+-- Généré le : mar. 21 mai 2024 à 22:02
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `overwatch`
 --
+CREATE DATABASE IF NOT EXISTS `overwatch` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `overwatch`;
 
 -- --------------------------------------------------------
 
@@ -42,18 +44,97 @@ CREATE TABLE `clic` (
 --
 
 INSERT INTO `clic` (`id_clic`, `ip`, `page`, `parametres`, `reference`, `langue`, `moment`) VALUES
-(1, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', '', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:47:48'),
-(2, '127.0.0.1', '/php/overwatch-securite/membre.php', '', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:47:50'),
-(3, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', '', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:48:06'),
-(4, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', '', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:48:07'),
-(5, '127.0.0.1', '/php/overwatch-securite/membre.php', '', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:48:33'),
-(6, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', '', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:50:52'),
-(7, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', '', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:51:11'),
-(8, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', '', 'http://localhost:8080/php/overwatch-securite/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:51:14'),
-(9, '127.0.0.1', '/php/overwatch-securite/heros.php', 'heros=1', 'http://localhost:8080/php/overwatch-securite/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:15'),
-(10, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', 'heros=1', 'http://localhost:8080/php/overwatch-securite/heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:44'),
-(11, '127.0.0.1', '/php/overwatch-securite/heros.php', 'heros=8', 'http://localhost:8080/php/overwatch-securite/liste-heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:52'),
-(12, '127.0.0.1', '/php/overwatch-securite/liste-heros.php', 'heros=8', 'http://localhost:8080/php/overwatch-securite/heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:57');
+(1, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:47:48'),
+(2, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:47:50'),
+(3, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:48:06'),
+(4, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:48:07'),
+(5, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:48:33'),
+(6, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:50:52'),
+(7, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:51:11'),
+(8, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:51:14'),
+(9, '127.0.0.1', '/php/overwatch/heros.php', 'heros=1', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:15'),
+(10, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=1', 'http://localhost:8080/php/overwatch/heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:44'),
+(11, '127.0.0.1', '/php/overwatch/heros.php', 'heros=8', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:52'),
+(12, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=8', 'http://localhost:8080/php/overwatch/heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 08:53:57'),
+(13, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=8', 'http://localhost:8080/php/overwatch/heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:09:07'),
+(14, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:09:08'),
+(15, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:09:33'),
+(16, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:10:13'),
+(17, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=8', 'http://localhost:8080/php/overwatch/heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:17:42'),
+(18, '127.0.0.1', '/php/overwatch/heros.php', 'heros=8', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:17:44'),
+(19, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=1', 'http://localhost:8080/php/overwatch/heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:17:45'),
+(20, '127.0.0.1', '/php/overwatch/heros.php', 'heros=8', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:17:46'),
+(21, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=8', 'http://localhost:8080/php/overwatch/heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:17:46'),
+(22, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:17:46'),
+(23, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:22:12'),
+(24, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=8', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:22:14'),
+(25, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 09:23:56'),
+(26, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:29:38'),
+(27, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:29:41'),
+(28, '127.0.0.1', '/php/overwatch/heros.php', 'heros=1', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:29:47'),
+(29, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/heros.php?heros=1', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:29:52'),
+(30, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:30:16'),
+(31, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/membre/inscription-identification.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:30:25'),
+(32, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:30:26'),
+(33, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:31:51'),
+(34, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/recherche-avancee.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:31:53'),
+(35, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:31:54'),
+(36, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:31:55'),
+(37, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/recherche-avancee.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:31:59'),
+(38, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:32:00'),
+(39, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/recherche-avancee.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:32:05'),
+(40, '127.0.0.1', '/php/overwatch/heros.php', 'heros=2', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:32:17'),
+(41, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=2', 'http://localhost:8080/php/overwatch/heros.php?heros=2', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:32:24'),
+(42, '127.0.0.1', '/php/overwatch/liste-heros.php', 'heros=2', 'http://localhost:8080/php/overwatch/heros.php?heros=2', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 12:32:47'),
+(43, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php?heros=2', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 14:57:14'),
+(44, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 14:57:23'),
+(45, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:04:30'),
+(46, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:14:36'),
+(47, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:23:37'),
+(48, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:38:52'),
+(49, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:40:47'),
+(50, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:40:58'),
+(51, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:42:25'),
+(52, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:42:40'),
+(53, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:42:41'),
+(54, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:42:53'),
+(55, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:43:22'),
+(56, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:43:42'),
+(57, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:45:57'),
+(58, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:45:59'),
+(59, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:46:14'),
+(60, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:46:15'),
+(61, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:47:31'),
+(62, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:47:34'),
+(63, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:47:36'),
+(64, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:47:58'),
+(65, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:47:59'),
+(66, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:48:00'),
+(67, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/index.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-01 15:48:07'),
+(68, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-02 21:42:44'),
+(69, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-02 21:42:52'),
+(70, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-02 21:43:01'),
+(71, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-02 21:43:09'),
+(72, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-02 21:43:13'),
+(73, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-02 21:43:17'),
+(74, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-02 21:43:18'),
+(75, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:02:32'),
+(76, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:02:35'),
+(77, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:02:38'),
+(78, '127.0.0.1', '/php/overwatch/membre.php', '', 'http://localhost:8080/php/overwatch/liste-heros.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:03:04'),
+(79, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:05:09'),
+(80, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:05:51'),
+(81, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:06:28'),
+(82, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:06:37'),
+(83, '127.0.0.1', '/php/overwatch/liste-heros.php', '', 'http://localhost:8080/php/overwatch/membre.php', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 08:06:44'),
+(84, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-03 09:44:45'),
+(85, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-08 08:02:14'),
+(86, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-10 08:22:54'),
+(87, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-10 09:25:05'),
+(88, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'en-CA,en-US;q=0.7,en;q=0.3', '2024-05-10 09:27:09'),
+(89, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-17 08:02:31'),
+(90, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-21 14:28:12'),
+(91, '127.0.0.1', '/php/overwatch/index.php', '', 'http://localhost:8080/php/', 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3', '2024-05-21 15:15:10');
 
 -- --------------------------------------------------------
 
@@ -147,7 +228,7 @@ ALTER TABLE `membre`
 -- AUTO_INCREMENT pour la table `clic`
 --
 ALTER TABLE `clic`
-  MODIFY `id_clic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_clic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT pour la table `heros`

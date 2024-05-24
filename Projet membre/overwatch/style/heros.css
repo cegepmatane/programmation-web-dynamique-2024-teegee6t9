@@ -1,44 +1,44 @@
-@import url("style.css");
-
-p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 25px;
-  text-align: justify;
-  margin-left: 1%;
-}
-h1 {
-  text-align: center;
-  color: black;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 50px;
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-
-h2 {
-  text-align: center;
-  font-size: 50px;
-}
-
-h3 {
-  font-size: 40px;
-  margin-left: 1%;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-
-h4 {
-  font-size: 30px;
-  margin-left: 1%;
-}
-
-.illustration {
-  margin-bottom: 1%;
-}
-
-span {
-  margin-left: 1%;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 25px;
-  text-align: justify;
-}
+@import url("style.css");
+
+p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 25px;
+  text-align: justify;
+  margin-left: 1%;
+}
+h1 {
+  text-align: center;
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 50px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+h2 {
+  text-align: center;
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 40px;
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+h4 {
+  font-size: 30px;
+  margin-left: 1%;
+}
+
+.illustration {
+  margin-bottom: 1%;
+}
+
+span {
+  margin-left: 1%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 25px;
+  text-align: justify;
+}
