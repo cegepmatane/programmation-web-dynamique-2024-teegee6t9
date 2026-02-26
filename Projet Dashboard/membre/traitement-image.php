@@ -1,18 +1,20 @@
 <?php
-if (isset($_POST['imageok'])) {
+$avatar = ""; // valeur par défaut
+if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != "") {
     $dossierCibleAvatar = "../images/membres/";
-    $avatar = $_FILES['image']['name'];
-    $fichierCibleAvatar = $dossierCibleAvatar . basename($avatar);
+    $avatar = basename($_FILES['image']['name']);
+    $fichierCibleAvatar = $dossierCibleAvatar . $avatar;
 
     if (preg_match("#png|jpg|jpeg#", $_FILES['image']['type'])) {
-
-        if ($_FILES['image']['size'] > 5000000) {
-            echo "<h3>L'avatar est trop volumineux</h3>";
-        } else {
+        if ($_FILES['image']['size'] <= 5000000) {
             move_uploaded_file($_FILES['image']['tmp_name'], $fichierCibleAvatar);
-            echo "<h3>Avatar envoyé</h3>";
+            // plus d'echo ici !
+        } else {
+            $avatar = ""; // trop gros
         }
     } else {
-        echo "<h3>Le format de l'avatar n'est pas valide</h3>";
+        $avatar = ""; // format invalide
     }
 }
+
+return $avatar;

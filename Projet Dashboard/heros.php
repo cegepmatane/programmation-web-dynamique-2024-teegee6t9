@@ -4,15 +4,24 @@ require CHEMIN_ACCESSEUR . "ClicDAO.php";
 ClicDAO::enregistrerVisite($_SERVER);
 require CHEMIN_ACCESSEUR . "HerosDAO.php";
 
-$idHeros = filter_var($_GET['heros'], FILTER_SANITIZE_NUMBER_INT);
-$heros = HerosDAO::lireHeros($idHeros);
+// Récupération paramètre
+$idHeros = filter_input(INPUT_GET, 'heros', FILTER_SANITIZE_SPECIAL_CHARS);
+
+// Lit le héros dans Firestore via HerosDAO migré (Firestore)
+$heros = HerosDAO::lireHeros($idHeros); // version Firestore (retourne tableau associatif structuré)
+
+// Protection pour affichage s’il n’existe pas
+if (!$heros || empty($heros['nom'])) {
+    $titre = "Héros inconnu";
+    require 'header.php';
+    echo '<h1>Ce héros n\'existe pas</h1>';
+    require 'footer.php';
+    exit;
+}
 
 $titre = $heros['nom'];
 require 'header.php';
-
 ?>
-
-
 
 <h1>Héros</h1>
 <section id="contenu">
@@ -43,5 +52,5 @@ require 'header.php';
 </section>
 
 <?php
-require 'footer.php'
+require 'footer.php';
 ?>

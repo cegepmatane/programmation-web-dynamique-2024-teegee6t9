@@ -6,27 +6,36 @@ require CHEMIN_ACCESSEUR . "MembreDAO.php";
 // Traitement inscription-information.php
 if (isset($_POST['imageok'])) {
 
-    if (empty($_POST['pseudonyme']) || !preg_match('/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/', $_POST['pseudonyme'])) {
+    $avatar = include "traitement-image.php";
+
+    if (empty($_POST['pseudonyme']) || !preg_match('/^[a-zA-Z0-9_-]{3,16}$/', $_POST['pseudonyme'])) {
         $_SESSION['erreurInformation'] = "<h4>Veuillez renseigner votre pseudonyme correctement</h4>";
         header('Location: inscription-information.php');
+        exit;
     } else if (!empty((MembreDAO::trouverMembre(array('pseudonyme' => $_POST['pseudonyme']))))) {
         $_SESSION['erreurInformation'] = "<h4>Pseudonyme non-disponible</h4>";
         header('Location: inscription-information.php');
+        exit;
     } else if (empty($_POST['motdepasse']) || $_POST['motdepasse'] != $_POST['motdepasse2']) {
         $_SESSION['erreurInformation'] = "<h4>Vos mots de passe doivent être identiques</h4>";
         header('Location: inscription-information.php');
-    } else if (empty($_POST['motdepasse']) || !preg_match('/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/', $_POST['motdepasse'])) {
-        $_SESSION['erreurInformation'] = "<h4>Vos mots de passe doivent être identiques</h4>";
+        exit;
+    } else if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $_POST['motdepasse'])) {
+        $_SESSION['erreurInformation'] = "<h4>Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule et un chiffre</h4>";
         header('Location: inscription-information.php');
+        exit;
     } else if (empty($avatar)) {
         $_SESSION['erreurInformation'] = "<h4>Veuillez choisir votre avatar</h4>";
         header('Location: inscription-information.php');
+        exit;
     } else if ($_POST['rank'] == "") {
         $_SESSION['erreurInformation'] = "<h4>Veuillez selectionner votre rank</h4>";
         header('Location: inscription-information.php');
+        exit;
     } else if ($_POST['main'] == "") {
         $_SESSION['erreurInformation'] = "<h4>Veuillez selectionner votre main</h4>";
         header('Location: inscription-information.php');
+        exit;
     } else {
         $filtreMembre = array(
             'pseudonyme' => FILTER_SANITIZE_SPECIAL_CHARS,

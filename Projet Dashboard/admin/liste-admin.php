@@ -1,21 +1,17 @@
 <?php
-include "../basededonnees.php";
+require "../configuration.php";
+require CHEMIN_ACCESSEUR . "HerosDAO.php";
 
-$MESSAGE_SQL_LISTE_HEROS = "SELECT `id_heros`, `nom`, `icon` FROM `heros`";
-
-$requeteListeHeros = $basededonnees->prepare($MESSAGE_SQL_LISTE_HEROS);
-$requeteListeHeros->execute();
-$listeHeros = $requeteListeHeros->fetchAll();
+// Firestore : récupère tous les héros
+$listeHeros = HerosDAO::listerHeros();
 
 $titre = "Panneau d'administration";
 require 'header.php';
 ?>
 
-
 <div class="container">
     <h1>Panneau d'administration</h1>
     <a href="index.php" class="bouton">Retourner au panneau</a>
-    <a href="ajouter-heros.php" class="bouton">Ajouter</a>
     <div id="liste-heros"></div>
     <?php
     foreach ($listeHeros as $heros) {
@@ -30,11 +26,9 @@ require 'header.php';
         </div>
 
     <?php
-
     }
     ?>
 </div>
-
 
 <?php
 require '../footer.php';

@@ -36,9 +36,9 @@ require 'header.php';
         <div class="vignette">
             <article class="photos-liste">
                 <h3>Gestion des heros</h3>
-                <a href="liste-admin.php" class="bouton">Ajouter Heros</a>
-                <a href="liste-admin.php" class="bouton">Modifier Heros</a>
-                <a href="liste-admin.php" class="bouton">Supprimer Heros</a>
+                <a href="ajouter-heros.php" class="bouton">Ajouter Héros</a>
+                <a href="liste-admin.php" class="bouton">Modifier Héros</a>
+                <a href="liste-admin.php" class="bouton">Supprimer Héros</a>
             </article>
         </div>
         <div class="vignette">

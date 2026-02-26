@@ -3,183 +3,220 @@ require_once CHEMIN_ACCESSEUR . "BaseDeDonnees.php";
 
 class HerosDAO
 {
+    /* =====================================================
+       LISTER TOUS LES HEROS
+    ====================================================== */
     public static function listerHeros()
     {
-        // Lire tous les documents de la collection "heros"
         $response = BaseDeDonnees::firestoreRequest("GET", "heros");
         $documents = json_decode($response, true)["documents"] ?? [];
 
         $listeHeros = [];
+
         foreach ($documents as $doc) {
-            $fields = $doc["fields"];
-            $listeHeros[] = [
-                "id_heros"            => basename($doc["name"]),
-                "nom"                 => $fields["nom"]["stringValue"] ?? "",
-                "classe"              => $fields["classe"]["stringValue"] ?? "",
-                "pv"                  => $fields["pv"]["integerValue"] ?? "",
-                "description_courte"  => $fields["description_courte"]["stringValue"] ?? "",
-                "icon"                => $fields["icon"]["stringValue"] ?? "",
-                // Ajoute les autres champs si besoin
-            ];
+            $fields = $doc["fields"] ?? [];
+
+            $listeHeros[] = self::mapperDocument($doc["name"], $fields);
         }
 
         return $listeHeros;
     }
 
-    public static function lireHeros($idHeros)
+    /* =====================================================
+       LIRE UN SEUL HEROS
+    ====================================================== */
+    public static function lireHeros($id)
     {
-        // Lire un document précis dans "heros"
-        $response = BaseDeDonnees::firestoreRequest("GET", "heros", null, $idHeros);
-        $doc = json_decode($response, true);
-        $fields = $doc["fields"] ?? [];
+        $response = BaseDeDonnees::firestoreRequest("GET", "heros", null, $id);
+        $data = json_decode($response, true);
 
-        if (empty($fields)) return null;
+        if (!isset($data["fields"])) {
+            return null;
+        }
 
-        // Reconstruit l'objet comme avant
-        return [
-            "id_heros"            => $idHeros,
-            "nom"                 => $fields["nom"]["stringValue"] ?? "",
-            "classe"              => $fields["classe"]["stringValue"] ?? "",
-            "pv"                  => $fields["pv"]["integerValue"] ?? "",
-            "description_courte"  => $fields["description_courte"]["stringValue"] ?? "",
-            "description_longue"  => $fields["description_longue"]["stringValue"] ?? "",
-            "icon"                => $fields["icon"]["stringValue"] ?? "",
-            "gi"                  => $fields["gi"]["stringValue"] ?? "",
-            // Ajoute le reste
-        ];
+        return self::mapperDocument($data["name"], $data["fields"]);
     }
 
+    /* =====================================================
+       AJOUTER UN HEROS
+    ====================================================== */
     public static function ajouterHeros($heros)
     {
-        // Format Firestore (ajouter document)
         $data = [
-            "fields" => [
-                "nom"                   => ["stringValue" => $heros['nom']],
-                "classe"                => ["stringValue" => $heros['classe']],
-                "pv"                    => ["integerValue" => (int)$heros['pv']],
-                "description_courte"    => ["stringValue" => $heros['description_courte']],
-                "habilite1"             => ["stringValue" => $heros['habilite1']],
-                "description_habilite1" => ["stringValue" => $heros['description_habilite1']],
-                "habilite2"             => ["stringValue" => $heros['habilite2']],
-                "description_habilite2" => ["stringValue" => $heros['description_habilite2']],
-                "ultimate"              => ["stringValue" => $heros['ultimate']],
-                "description_ultimate"  => ["stringValue" => $heros['description_ultimate']],
-                "description_longue"    => ["stringValue" => $heros['description_longue']],
-                "icon"                  => ["stringValue" => $heros['icon']],
-                "gi"                    => ["stringValue" => $heros['gi']],
-            ]
+            "fields" => self::formatterPourFirestore($heros)
         ];
+
         $response = BaseDeDonnees::firestoreRequest("POST", "heros", $data);
-        return json_decode($response, true); // retourne le document Firestore créé
-    }
 
-    public static function modifierHeros($heros, $icon, $gi)
-    {
-        // PATCH sur le document Firestore (update)
-        $data = [
-            "fields" => [
-                "nom"                   => ["stringValue" => $heros['nom']],
-                "classe"                => ["stringValue" => $heros['classe']],
-                "pv"                    => ["integerValue" => (int)$heros['pv']],
-                "description_courte"    => ["stringValue" => $heros['description_courte']],
-                "habilite1"             => ["stringValue" => $heros['habilite1']],
-                "description_habilite1" => ["stringValue" => $heros['description_habilite1']],
-                "habilite2"             => ["stringValue" => $heros['habilite2']],
-                "description_habilite2" => ["stringValue" => $heros['description_habilite2']],
-                "ultimate"              => ["stringValue" => $heros['ultimate']],
-                "description_ultimate"  => ["stringValue" => $heros['description_ultimate']],
-                "description_longue"    => ["stringValue" => $heros['description_longue']],
-                "icon"                  => ["stringValue" => $icon],
-                "gi"                    => ["stringValue" => $gi],
-            ]
-        ];
-
-        $response = BaseDeDonnees::firestoreRequest("PATCH", "heros", $data, $heros["id_heros"]);
         return json_decode($response, true);
     }
 
-    public static function supprimerHeros($idheros)
+    /* =====================================================
+       MODIFIER UN HEROS
+    ====================================================== */
+    public static function modifierHeros($id, $heros)
     {
-        // DELETE le document Firestore
-        $response = BaseDeDonnees::firestoreRequest("DELETE", "heros", null, $idheros);
-        // Firestore retourne un body vide en général
-        return $response === null || $response === "";
+        $data = [
+            "fields" => self::formatterPourFirestore($heros)
+        ];
+
+        $response = BaseDeDonnees::firestoreRequest("PATCH", "heros", $data, $id);
+
+        return json_decode($response, true);
     }
 
+    /* =====================================================
+       SUPPRIMER UN HEROS
+    ====================================================== */
+    public static function supprimerHeros($id)
+    {
+        BaseDeDonnees::firestoreRequest("DELETE", "heros", null, $id);
+        return true;
+    }
+
+    /* =====================================================
+       STATISTIQUES PAR CLASSE
+    ====================================================== */
     public static function listerClasse()
     {
-        // Regroupement par classe, calculs "à la main" côté PHP
-        $response = BaseDeDonnees::firestoreRequest("GET", "heros");
-        $documents = json_decode($response, true)["documents"] ?? [];
+        $heros = self::listerHeros();
 
         $stats = [];
-        foreach ($documents as $doc) {
-            $fields = $doc["fields"];
-            $classe = $fields["classe"]["stringValue"] ?? "inconnu";
-            $pv     = (int)($fields["pv"]["integerValue"] ?? 0);
+
+        foreach ($heros as $h) {
+            $classe = $h["classe"] ?: "inconnu";
+
+            preg_match('/\d+/', $h["pv"], $matches);
+            $pv = isset($matches[0]) ? (int)$matches[0] : 0;
 
             if (!isset($stats[$classe])) {
                 $stats[$classe] = [
-                    "classe"    => $classe,
-                    "nombre"    => 0,
-                    "pv_total"  => 0,
-                    "pv_list"   => [],
+                    "classe" => $classe,
+                    "nombre" => 0,
+                    "pv_total" => 0,
+                    "pv_list" => []
                 ];
             }
+
             $stats[$classe]["nombre"]++;
             $stats[$classe]["pv_total"] += $pv;
             $stats[$classe]["pv_list"][] = $pv;
         }
 
-        // Calculs finaux
         $result = [];
+
         foreach ($stats as $classe => $data) {
             $pv_list = $data["pv_list"];
-            $pv_moyenne = count($pv_list) ? array_sum($pv_list)/count($pv_list) : 0;
+
+            $pv_moyenne = count($pv_list) ? array_sum($pv_list) / count($pv_list) : 0;
             $pv_max = count($pv_list) ? max($pv_list) : 0;
             $pv_min = count($pv_list) ? min($pv_list) : 0;
+
             $result[] = [
-                "classe"     => $classe,
-                "nombre"     => $data["nombre"],
+                "classe" => $classe,
+                "nombre" => $data["nombre"],
                 "pv_moyenne" => round($pv_moyenne, 2),
                 "pv_maximal" => $pv_max,
-                "pv_minimal" => $pv_min,
+                "pv_minimal" => $pv_min
             ];
         }
+
         return $result;
     }
 
+    /* =====================================================
+       MOYENNE ET ECART TYPE DES PV
+    ====================================================== */
     public static function moyenneEtEcartType()
     {
-        // Moyenne et écart-type sur pv, côté PHP
-        $response = BaseDeDonnees::firestoreRequest("GET", "heros");
-        $documents = json_decode($response, true)["documents"] ?? [];
-        $pv_list = [];
-        foreach ($documents as $doc) {
-            $fields = $doc["fields"];
-            $pv = (int)($fields["pv"]["integerValue"] ?? 0);
-            $pv_list[] = $pv;
-        }
+        $heros = self::listerHeros();
+
+        $pv_list = array_map(function ($h) {
+            preg_match('/\d+/', $h["pv"], $matches);
+            return isset($matches[0]) ? (int)$matches[0] : 0;
+        }, $heros);
+
         $count = count($pv_list);
-        $moyenne = $count ? array_sum($pv_list)/$count : 0;
-        $ecart_type = 0;
-        if ($count > 1) {
-            $ecart_type = sqrt(array_sum(array_map(function($x) use ($moyenne) { return pow($x-$moyenne, 2); }, $pv_list))/$count);
+
+        if ($count === 0) {
+            return [["moyenne" => 0, "ecart_type" => 0]];
         }
-        return [["moyenne" => round($moyenne,2), "ecart_type" => round($ecart_type,2)]];
+
+        $moyenne = array_sum($pv_list) / $count;
+
+        $variance = 0;
+        foreach ($pv_list as $pv) {
+            $variance += pow($pv - $moyenne, 2);
+        }
+
+        $variance = $variance / $count;
+        $ecart_type = sqrt($variance);
+
+        return [[
+            "moyenne" => round($moyenne, 2),
+            "ecart_type" => round($ecart_type, 2)
+        ]];
     }
 
+    /* =====================================================
+       IMAGE ALEATOIRE
+    ====================================================== */
     public static function afficherImageAleatoire()
     {
-        $response = BaseDeDonnees::firestoreRequest("GET", "heros");
-        $documents = json_decode($response, true)["documents"] ?? [];
-        if (!$documents) return null;
-        // Prend un doc au hasard
-        $doc = $documents[array_rand($documents)];
-        $fields = $doc["fields"];
+        $heros = self::listerHeros();
+
+        if (empty($heros)) {
+            return null;
+        }
+
+        $random = $heros[array_rand($heros)];
+
         return [
-            "nom"  => $fields["nom"]["stringValue"] ?? "",
+            "nom" => $random["nom"],
+            "icon" => $random["icon"]
+        ];
+    }
+
+    /* =====================================================
+       FONCTIONS PRIVEES
+    ====================================================== */
+
+    private static function mapperDocument($name, $fields)
+    {
+        return [
+            "id_heros" => basename($name), // ID Firestore stable
+            "nom" => $fields["nom"]["stringValue"] ?? "",
+            "classe" => $fields["classe"]["stringValue"] ?? "",
+            "pv" => $fields["pv"]["stringValue"] ?? "",
+            "description_courte" => $fields["description_courte"]["stringValue"] ?? "",
+            "description_longue" => $fields["description_longue"]["stringValue"] ?? "",
+            "habilite1" => $fields["habilite1"]["stringValue"] ?? "",
+            "description_habilite1" => $fields["description_habilite1"]["stringValue"] ?? "",
+            "habilite2" => $fields["habilite2"]["stringValue"] ?? "",
+            "description_habilite2" => $fields["description_habilite2"]["stringValue"] ?? "",
+            "ultimate" => $fields["ultimate"]["stringValue"] ?? "",
+            "description_ultimate" => $fields["description_ultimate"]["stringValue"] ?? "",
             "icon" => $fields["icon"]["stringValue"] ?? "",
+            "gi" => $fields["gi"]["stringValue"] ?? "",
+        ];
+    }
+
+    private static function formatterPourFirestore($heros)
+    {
+        return [
+            "nom" => ["stringValue" => $heros['nom'] ?? ""],
+            "classe" => ["stringValue" => $heros['classe'] ?? ""],
+            "pv" => ["stringValue" => $heros['pv'] ?? ""],
+            "description_courte" => ["stringValue" => $heros['description_courte'] ?? ""],
+            "description_longue" => ["stringValue" => $heros['description_longue'] ?? ""],
+            "habilite1" => ["stringValue" => $heros['habilite1'] ?? ""],
+            "description_habilite1" => ["stringValue" => $heros['description_habilite1'] ?? ""],
+            "habilite2" => ["stringValue" => $heros['habilite2'] ?? ""],
+            "description_habilite2" => ["stringValue" => $heros['description_habilite2'] ?? ""],
+            "ultimate" => ["stringValue" => $heros['ultimate'] ?? ""],
+            "description_ultimate" => ["stringValue" => $heros['description_ultimate'] ?? ""],
+            "icon" => ["stringValue" => $heros['icon'] ?? ""],
+            "gi" => ["stringValue" => $heros['gi'] ?? ""],
         ];
     }
 }

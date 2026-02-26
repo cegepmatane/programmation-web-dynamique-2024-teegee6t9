@@ -7,23 +7,25 @@ require "header.php";
 // Traitement de inscription-information.php
 if (isset($_POST['inscription-identification'])) {
 
-    if (empty($_POST['prenom']) || empty($_POST['nom'])) {
+    if (empty($_POST['prenom']) || empty($_POST['nom']) || empty($_POST['courriel'])) {
         $_SESSION['erreurIdentification'] = "<h4>Veuillez renseigner tous les champs !</h4>";
         header('Location: inscription-identification.php');
-    } else if (empty($_POST['prenom']) || !filter_var($_POST['courriel'], FILTER_VALIDATE_EMAIL)) {
+        exit;
+    } else if (!filter_var($_POST['courriel'], FILTER_VALIDATE_EMAIL)) {
         $_SESSION['erreurIdentification'] = "<h4>Veuillez renseigner votre email correctement</h4>";
         header('Location: inscription-identification.php');
+        exit;
     } else if (MembreDAO::trouverCourriel(filter_var($_POST['courriel'], FILTER_SANITIZE_EMAIL))) {
         $_SESSION['erreurIdentification'] = "<h4>Courriel non-disponible</h4>";
         header('Location: inscription-identification.php');
+        exit;
     } else {
-
         $filtreMembre = array(
             'prenom' => FILTER_SANITIZE_SPECIAL_CHARS,
             'nom' => FILTER_SANITIZE_SPECIAL_CHARS,
             'courriel' => FILTER_SANITIZE_EMAIL,
         );
-
+    
         $_SESSION['membre'] = filter_input_array(INPUT_POST, $filtreMembre);
     }
 }
