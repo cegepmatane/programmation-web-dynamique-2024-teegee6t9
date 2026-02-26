@@ -35,10 +35,10 @@ require 'header.php';
         </div>
         <div class="vignette">
             <article class="photos-liste">
-                <h3>Gestion des films</h3>
-                <a href="liste-admin.php" class="bouton">Ajouter Film</a>
-                <a href="liste-admin.php" class="bouton">Modifier Film</a>
-                <a href="liste-admin.php" class="bouton">Supprimer Film</a>
+                <h3>Gestion des heros</h3>
+                <a href="liste-admin.php" class="bouton">Ajouter Heros</a>
+                <a href="liste-admin.php" class="bouton">Modifier Heros</a>
+                <a href="liste-admin.php" class="bouton">Supprimer Heros</a>
             </article>
         </div>
         <div class="vignette">
