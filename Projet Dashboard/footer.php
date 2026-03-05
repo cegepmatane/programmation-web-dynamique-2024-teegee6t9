@@ -17,7 +17,7 @@
           </li>
         </ul>
       <div class="copyright">
-        Copyright &copy; 2024 Thibault Godard. Tout droits
+        Copyright &copy; 2026 Thibault Godard. Tout droits
         réservés
       </div>
     </footer>

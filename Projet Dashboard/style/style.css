@@ -1,80 +1,103 @@
-/* css rest */
-
+/* ================== RESET DE BASE ================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ================== BODY GLOBAL ================== */
 body {
-  /* background: linear-gradient( background: rgb(239,99,19);
-        background: linear-gradient(90deg, rgba(239,99,19,1) 0%, rgba(255,255,255,1) 100%); ); */
+  /* Fond Overwatch (garde ton image si tu veux) */
   background-image: url("../images/overwatch_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 100%;
+
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-content: space-around;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  color: #f1f1f1;
+}
+
+/* ================== TITRES GLOBAUX ================== */
+h1,
+h2,
+h3,
+h4 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.6rem;
+  color: #ee6314;
+  margin: 2.5rem 0 1rem;
 }
 
 h2 {
-  text-align: center;
+  font-size: 2.1rem;
   color: #ee6314;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 60px;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin: 2rem 0 1rem;
 }
 
-.dashboard {
-  text-align: center;
-  color: #ee6314;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 40px;
-  margin-bottom: 5%;
+h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 1.5rem 0 0.75rem;
 }
 
 h4 {
-  text-align: center;
-  color: red;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  margin-top: 5%;
+  font-size: 1.3rem;
+  color: #ee6314;
+  margin: 1rem 0 0.5rem;
 }
 
-/* menu principal*/
+/* Texte de base */
+p {
+  line-height: 1.6;
+}
 
-nav {
+/* ================== NAVBAR ================== */
+
+nav.navbar {
   width: 100%;
   z-index: 100;
-  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
-nav ul {
+nav.navbar ul.menu {
   list-style-type: none;
   display: flex;
-}
-
-nav li {
-  flex-grow: 1;
-  position: relative;
-  text-align: center;
   background-color: white;
 }
 
-nav li a {
+nav.navbar ul.menu li {
+  flex-grow: 1;
+  text-align: center;
+  position: relative;
+}
+
+nav.navbar ul.menu li a {
   text-decoration: none;
   display: block;
-  padding: 20px;
+  padding: 15px 20px;
   color: #ee6314;
   font-weight: bold;
   border-bottom: 2px solid #ee6314;
+  transition: 0.25s ease background-color, 0.25s ease color;
 }
 
-nav li a:hover {
+nav.navbar ul.menu li a:hover {
   color: white;
   background-color: #ee6314;
+}
+
+nav.navbar ul.menu li .icone {
+  margin-right: 6px;
 }
 
 .actif {
@@ -82,136 +105,234 @@ nav li a:hover {
   color: white;
 }
 
-.actif:hover {
+/* Le texte DANS le lien actif doit être blanc */
+nav.navbar ul.menu li a.actif,
+nav.navbar ul.menu li.actif a {
+  color: white;
+  background-color: #ee6314;
+}
+
+/* Hover sur le lien actif : s'inverse */
+nav.navbar ul.menu li a.actif:hover,
+nav.navbar ul.menu li.actif a:hover {
   background-color: white;
   color: #ee6314;
 }
 
-li form {
-  width: 300px;
-  margin-top: 8px;
-  margin-bottom: 10px;
-  margin-left: 3%;
-}
-
-form {
-  width: 300px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 3%;
-}
-
-form label {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-form input {
-  padding: 11px;
-  padding-right: 30%;
-  margin-right: 10%;
-  margin-left: 5%;
-  margin-top: 2%;
-}
-
-.header {
+/* Recherche rapide dans le menu */
+#recherche-rapide form {
   width: 100%;
 }
 
-.logo {
-  width: 10%;
-  padding-top: 10%;
+#recherche-rapide input[type="text"] {
+  width: 90%;
+  padding: 8px 10px;
+  margin: 6px auto;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
-footer {
-  background-color: #ee6314;
-  box-sizing: border-box;
-  flex-basis: 100%;
-  padding: 10px;
-  display: flex;
-  margin-top: 5%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
-.copyright {
-  font-size: 1.5em;
-  font-weight: bold;
-  padding: 1.5%;
-}
-
-/* icon */
-.social-icon li {
-  display: inline-flex;
-  margin: 0px 10px 10px 0px;
-  font-size: 24px;
-  list-style-type: none;
-  /* haut, gauche, bas, droite */
-  margin: 10px 10px 10px 0px;
-  border-radius: 50%;
-  transition: 0.5s;
-}
-
-.social-icon li a {
-  padding: 16px;
-  color: #ee6314;
-  display: block;
-}
-
-.social-icon li:nth-child(1) {
-  background-color: #222222;
-}
-
-.social-icon li:nth-child(1):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
-}
-
-.social-icon li:nth-child(2) {
-  background-color: #ffffff;
-}
-
-.social-icon li:nth-child(2):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(34, 34, 34, 0.5);
-}
-
-.social-icon li:nth-child(3) {
-  background-color: #222222;
-}
-
-.social-icon li:nth-child(3):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
-}
-
-.social-icon li:nth-child(4) {
-  background-color: #ffffff;
-}
-
-.social-icon li:nth-child(4):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(34, 34, 34, 0.5);
-}
-
-.social-icon li:nth-child(5) {
-  background-color: #222222;
-}
-
-.social-icon li:nth-child(5):hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 10px 10px rgba(255, 255, 255, 0.5);
-}
-
-.images {
-  margin-left: 37%;
-}
-
+/* Avatar membre dans le menu */
 .imagesHeader {
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
 }
+
+/* ================== LAYOUT GÉNÉRAL ================== */
+
+main {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ================== ACCUEIL (index.php) ================== */
+
+/* Titre principal et texte d’intro (si utilisés directement dans main)
+   – pour ton nouveau index.php, c’est surtout .intro qui est utilisée */
+main > h1,
+main > h2 {
+  font-size: 2.4rem;
+  text-align: center;
+  color: #ee6314;
+  margin-bottom: 20px;
+}
+
+main > p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+/* ----- Bloc d’intro ----- */
+.intro {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  padding: 24px 26px;
+  background-color: rgba(34, 34, 34, 0.92);
+  border-radius: 18px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.intro h2 {
+  margin-bottom: 12px;
+}
+
+.intro p {
+  font-size: 1.05rem;
+}
+
+/* ----- Section "Nos Héros" sur l’accueil ----- */
+section.liste-heros {
+  background-color: rgba(34, 34, 34, 0.9);
+  border-radius: 18px;
+  padding: 24px 24px 30px;
+  margin: 0 auto 40px auto;
+  max-width: 900px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #ee6314;
+  margin-bottom: 20px;
+}
+
+/* Conteneur des cartes héros (3 héros max sur l’accueil) */
+.liste-heros-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Carte héros sur l’accueil */
+.liste-heros-container .heros {
+  background-color: #393939;
+  border-radius: 12px;
+  padding: 16px 16px 20px;
+  width: 260px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+/* Image héros mini */
+.liste-heros-container .heros img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ee6314;
+  margin-bottom: 8px;
+}
+
+/* Nom, classe, description courte */
+.liste-heros-container .heros .nom {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.liste-heros-container .heros .classe {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ee6314;
+  margin-bottom: 6px;
+}
+
+.liste-heros-container .heros .description_courte {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Bouton "En savoir plus" dans les cartes */
+.liste-heros-container .heros .bouton {
+  display: inline-block;
+  width: auto;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Lien "Voir tous les héros" */
+.voir-tous {
+  display: block;
+  margin: 18px auto 0 auto;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid #ee6314;
+  width: max-content;
+}
+
+.voir-tous:hover {
+  color: #ee6314;
+}
+
+/* ----- Section CTA "Rejoignez-nous" ----- */
+section.cta {
+  background-color: rgba(34, 34, 34, 0.9);
+  border-radius: 18px;
+  padding: 26px 24px 30px;
+  margin: 0 auto;
+  max-width: 900px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+section.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 14px;
+  color: #ee6314;
+}
+
+section.cta p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Bouton "Créer un compte" */
+section.cta .bouton {
+  width: auto;
+  padding: 10px 30px;
+  font-size: 0.95rem;
+}
+
+/* ================== BOUTONS GÉNÉRIQUES ================== */
+
+.bouton {
+  display: inline-block;
+  text-align: center;
+  background-color: #ee6314;
+  color: #222222;
+  text-decoration: none;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 5px;
+  transition: 0.25s ease background-color, 0.25s ease color,
+    0.25s ease transform;
+  cursor: pointer;
+}
+
+.bouton:hover {
+  background-color: lightgray;
+  color: #ee6314;
+  transform: translateY(-2px);
+}
+
+/* ================== TABLEAUX (dashboard) ================== */
 
 table {
   border-spacing: 0;
@@ -245,36 +366,30 @@ caption {
   padding-top: 2%;
 }
 
-.chart-container2 {
-  width: 66%;
-  height: 50%;
-  margin-top: 5%;
-  margin-left: 17%;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 2%;
-  padding: 2%;
-}
+/* ================== SECTIONS GRAPHIQUES ================== */
 
+.chart-container2,
 .chart-container {
   width: 66%;
   height: 50%;
   margin-top: 5%;
   margin-left: 17%;
   background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.chart-container {
   border-radius: 50%;
-  padding: 2%;
   padding-bottom: 6%;
   padding-right: 4%;
   padding-left: 4%;
 }
 
-#dashboard {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-evenly;
-}
+/* ================== CARTES PHOTOS ================== */
 
-.photos {
+.photos,
+.photos-liste {
   background-color: #393939;
   border-radius: 10%;
   margin: 40px;
@@ -284,12 +399,7 @@ caption {
 
 .photos-liste {
   height: 91%;
-  background-color: #393939;
-  border-radius: 10%;
-  margin: 40px;
-  padding: 20px;
   padding-top: 25%;
-  overflow: hidden;
 }
 
 .photos img {
@@ -316,4 +426,79 @@ caption {
 .nom-aleatoire {
   color: white;
   margin-bottom: 2%;
+}
+
+/* ================== IMAGES GÉNÉRALES ================== */
+
+.images {
+  margin-left: 37%;
+}
+
+/* ================== FOOTER ================== */
+
+footer {
+  background-color: #ee6314;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  padding: 10px 24px;
+  display: flex;
+  margin-top: 40px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Icônes sociaux */
+.social-icon {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.social-icon li a {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #ee6314;
+  text-decoration: none;
+  transition: 0.25s ease all;
+}
+
+.social-icon li a:hover {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+/* ================== RESPONSIVE ================== */
+
+@media (max-width: 900px) {
+  main {
+    padding: 32px 14px 48px;
+  }
+
+  section.liste-heros,
+  section.cta,
+  .intro {
+    padding: 20px 16px 24px;
+  }
+
+  .liste-heros-container .heros {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav.navbar ul.menu {
+    flex-direction: column;
+  }
 }

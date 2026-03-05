@@ -1,134 +1,204 @@
-@import url("style.css");
-p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  text-align: justify;
-}
+/* =============================================
+   OVERWATCH HEROES — liste-heros.php (styles scoped)
+   À inclure EN PLUS de ton style.css existant.
+   Tous les sélecteurs sont préfixés par #liste-heros ~ .container
+   pour éviter tout conflit avec index.php
+   ============================================= */
 
-h1 {
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap');
+
+/* ─── Titre de la page ───────────────────────── */
+h2 {
+  font-family: 'Rajdhani', Georgia, serif;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   text-align: center;
-  color: black;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 30px;
-  margin-top: 5%;
+  color: #ee6314;
+  text-shadow: 0 0 16px rgba(238, 99, 20, 0.35);
+  margin-bottom: 2rem;
 }
 
-h3 {
-  text-align: center;
-  color: black;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 25px;
-  margin-top: 5%;
+/* ─── Layout : une carte par ligne, centrée ─── */
+#liste-heros ~ .container {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
 }
 
-.nom {
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 1%;
+#liste-heros ~ .container .section {
+  width: 100%;
+  max-width: 760px;
+  min-height: unset;
+  padding-top: 0;
 }
 
-span {
-  margin-right: 13%;
-  padding-left: 22%;
+/* ─── Card héros ─────────────────────────────── */
+#liste-heros ~ .container .heros {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: auto auto auto 1fr auto;
+  column-gap: 24px;
+  align-items: start;
+
+  background-color: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(238, 99, 20, 0.25);
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-* {
+#liste-heros ~ .container .heros:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 45px rgba(0,0,0,0.9), 0 0 0 1px rgba(238,99,20,0.4);
+  border-color: rgba(238, 99, 20, 0.5);
+}
+
+/* Coin déco */
+#liste-heros ~ .container .heros::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid #ee6314;
+  border-right: 2px solid #ee6314;
+  border-radius: 0 0 14px 0;
+  opacity: 0.35;
+  transition: opacity 0.3s, width 0.3s, height 0.3s;
+}
+
+#liste-heros ~ .container .heros:hover::after {
+  opacity: 1;
+  width: 55px;
+  height: 55px;
+}
+
+/* ─── Image : colonne gauche, toutes les lignes ─ */
+#liste-heros ~ .container .heros .images {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#liste-heros ~ .container .heros .images img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(238, 99, 20, 0.5);
+  box-shadow: 0 0 20px rgba(238, 99, 20, 0.15);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#liste-heros ~ .container .heros:hover .images img {
+  box-shadow: 0 0 28px rgba(238, 99, 20, 0.45);
+  transform: scale(1.05);
+}
+
+/* ─── Nom ────────────────────────────────────── */
+#liste-heros ~ .container .heros .nom {
+  grid-column: 2;
+  font-family: 'Rajdhani', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: left;
+  margin: 0 0 6px;
+}
+
+/* ─── Badges classe / pv ─────────────────────── */
+#liste-heros ~ .container .heros .classe {
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  border-radius: 3px;
+  background: rgba(238, 99, 20, 0.12);
+  border: 1px solid rgba(238, 99, 20, 0.4);
+  color: #ee6314;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-right: 8px;
+  /* reset du span margin/padding du css liste */
+  margin-left: 0;
+  padding-left: 0.7rem;
+}
+
+#liste-heros ~ .container .heros .pv {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: #aaa;
+  letter-spacing: 1px;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  color: #f1f1f1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-content: space-around;
-}
-
-html {
-  min-height: 100vh;
-}
-
-/* conteneur cartes css */
-.liste-heros {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 80%;
-}
-
-.heros {
-  position: relative;
-  flex-basis: 60%;
-  flex-grow: 1;
-  margin-left: 20%;
-  margin-right: 20%;
-  /* margin-top: 2%; */
-  margin-bottom: 500px;
-  padding-left: 5%;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  padding-right: 5%;
-  background-color: rgba(57, 57, 57, 0.9);
-  border-radius: 10px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-  width: auto;
-}
-
-.heros h1 {
-  text-align: center;
-  margin: 2%;
-}
-.heros h2 {
-  text-align: center;
-  margin: 2%;
-}
-
-.bouton {
-  display: block;
-  text-align: center;
-  margin: 4% auto 0 auto;
-  background-color: #ee6314;
-  color: #222222;
-  text-decoration: none;
-  padding: 15px 32px;
-  font-size: 1em;
-  border: none;
-  border-radius: 5px;
-  width: 50%;
-}
-
-.bouton:hover {
-  background-color: lightgray;
+#liste-heros ~ .container .heros .pv::before {
+  content: '❤ ';
   color: #ee6314;
-  align-self: center;
+  font-size: 0.78rem;
 }
 
-.copyright {
-  color: black;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 1.5em;
+/* ─── Description courte ─────────────────────── */
+#liste-heros ~ .container .heros .description_courte {
+  grid-column: 2;
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.65;
+  margin: 8px 0 0;
+  text-align: left;
 }
 
-.section {
-  min-height: 90vh;
-  width: 100%;
-  position: relative;
-  padding-top: 3%;
-}
-
-footer {
+/* ─── Bouton ─────────────────────────────────── */
+#liste-heros ~ .container .heros .bouton {
+  grid-column: 2;
+  display: inline-block;
+  width: auto;
+  margin: 12px 0 0;
+  padding: 8px 22px;
+  font-family: 'Rajdhani', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   background-color: #ee6314;
-  box-sizing: border-box;
-  flex-basis: 100%;
-  padding: 10px;
-  display: flex;
-  margin-top: 0%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  position: relative;
-  bottom: 0;
+  color: #111;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+#liste-heros ~ .container .heros .bouton:hover {
+  background-color: #fff;
+  color: #ee6314;
+  transform: translateY(-2px);
+}
+
+/* ─── Responsive ─────────────────────────────── */
+@media (max-width: 600px) {
+  #liste-heros ~ .container .heros {
+    grid-template-columns: 1fr;
+  }
+
+  #liste-heros ~ .container .heros .images {
+    grid-row: 1;
+    margin-bottom: 12px;
+  }
+
+  #liste-heros ~ .container .heros .nom,
+  #liste-heros ~ .container .heros .description_courte,
+  #liste-heros ~ .container .heros .bouton {
+    grid-column: 1;
+    text-align: center;
+  }
 }

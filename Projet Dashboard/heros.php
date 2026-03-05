@@ -3,14 +3,11 @@ require "configuration.php";
 require CHEMIN_ACCESSEUR . "ClicDAO.php";
 ClicDAO::enregistrerVisite($_SERVER);
 require CHEMIN_ACCESSEUR . "HerosDAO.php";
-
 // Récupération paramètre
 $idHeros = filter_input(INPUT_GET, 'heros', FILTER_SANITIZE_SPECIAL_CHARS);
-
 // Lit le héros dans Firestore via HerosDAO migré (Firestore)
 $heros = HerosDAO::lireHeros($idHeros); // version Firestore (retourne tableau associatif structuré)
-
-// Protection pour affichage s’il n’existe pas
+// Protection pour affichage s'il n'existe pas
 if (!$heros || empty($heros['nom'])) {
     $titre = "Héros inconnu";
     require 'header.php';
@@ -18,39 +15,39 @@ if (!$heros || empty($heros['nom'])) {
     require 'footer.php';
     exit;
 }
-
 $titre = $heros['nom'];
 require 'header.php';
 ?>
-
 <h1>Héros</h1>
 <section id="contenu">
     <h2 class="nom"><a href="liste-heros.php?heros=<?= $heros['id_heros'] ?>"><?= $heros['nom'] ?></a></h2>
-    <br>
-    <div class="illustration"><img src="images/<?= $heros['gi'] ?>" alt="illustration"></div>
-    <div class="heros">
-        <h3>Caractéristiques :</h3>
-        <span class="classe"><?= $heros['classe'] ?></span>
-        <br><span class="pv"><?= $heros['pv'] ?></span>
-        <br>
-        <br>
-        <h4 class="habilite1"><?= $heros['habilite1'] ?></h4>
-        <br>
-        <p class="description_habilite1"><?= $heros['description_habilite1'] ?></p>
-        <br><br>
-        <h4 class="habilite2"><?= $heros['habilite2'] ?></h4>
-        <br>
-        <p class="description_habilite2"><?= $heros['description_habilite2'] ?></p>
-        <br><br>
-        <h4 class="ultimate"><?= $heros['ultimate'] ?></h4>
-        <br>
-        <p class="description_ultimate"><?= $heros['description_ultimate'] ?></p>
-        <br>
+
+    <!-- Bloc haut : illustration + caractéristiques -->
+    <div class="bloc-haut">
+        <div class="illustration">
+            <img src="images/<?= $heros['gi'] ?>" alt="illustration">
+        </div>
+        <div class="heros">
+            <h3>Caractéristiques :</h3>
+            <span class="classe"><?= $heros['classe'] ?></span>
+            <br><span class="pv"><?= $heros['pv'] ?></span>
+            <br><br>
+            <h4 class="habilite1"><?= $heros['habilite1'] ?></h4>
+            <p class="description_habilite1"><?= $heros['description_habilite1'] ?></p>
+            <br>
+            <h4 class="habilite2"><?= $heros['habilite2'] ?></h4>
+            <p class="description_habilite2"><?= $heros['description_habilite2'] ?></p>
+            <br>
+            <h4 class="ultimate"><?= $heros['ultimate'] ?></h4>
+            <p class="description_ultimate"><?= $heros['description_ultimate'] ?></p>
+        </div>
+    </div>
+
+    <!-- Bloc bas : histoire pleine largeur -->
+    <div class="bloc-histoire">
         <h3>Histoire :</h3>
         <pre class="description_longue"><?= $heros['description_longue'] ?></pre>
     </div>
 </section>
-
 <?php
 require 'footer.php';
-?>

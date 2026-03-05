@@ -1,0 +1,29 @@
+# Activer mod_rewrite
+RewriteEngine On
+
+# IMPORTANT : base de réécriture
+# Ton site est servi à l'URL :
+#   www.teegee6t9.space/web-dynamique/overwatch/
+# Donc la base est /web-dynamique/overwatch/
+RewriteBase /web-dynamique/overwatch/
+
+# 1) Forcer le slash final sur /web-dynamique/overwatch
+#    (si tu tapes /web-dynamique/overwatch sans /)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/web-dynamique/overwatch$
+RewriteRule ^web-dynamique/overwatch$ /web-dynamique/overwatch/ [L,R=301]
+
+# 2) Page d'accueil : index.php
+DirectoryIndex index.php
+
+# 3) Si le fichier demandé existe "tel quel", on ne touche à rien
+#    (CSS, JS, images, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 4) Réécriture propre :
+#    /web-dynamique/overwatch/truc -> /web-dynamique/overwatch/truc.php
+#    Exemple : /web-dynamique/overwatch/heros -> heros.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L,QSA]

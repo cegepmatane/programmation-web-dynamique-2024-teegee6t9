@@ -1,0 +1,198 @@
+/* =============================================
+   OVERWATCH HEROES — index.php (styles scoped)
+   À inclure EN PLUS de ton style.css existant.
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap');
+
+/* ─── Section intro ──────────────────────────── */
+.intro {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(20, 20, 20, 0.96) !important;
+  border: 1px solid rgba(238, 99, 20, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8) !important;
+}
+
+.intro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(238,99,20,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.intro h2 {
+  font-family: 'Rajdhani', Georgia, serif;
+  font-size: 2.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ee6314 !important;
+  text-shadow: 0 0 20px rgba(238, 99, 20, 0.4);
+}
+
+.intro h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #ee6314;
+  margin: 0.6rem auto 0;
+  box-shadow: 0 0 10px rgba(238,99,20,0.6);
+}
+
+.intro p {
+  color: #e0e0e0 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* ─── Section liste-heros ────────────────────── */
+section.liste-heros {
+  background-color: rgba(20, 20, 20, 0.96) !important;
+  border: 1px solid rgba(238, 99, 20, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8) !important;
+  position: relative;
+}
+
+.section-title {
+  font-family: 'Rajdhani', Georgia, serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ee6314 !important;
+  text-shadow: 0 0 16px rgba(238, 99, 20, 0.35);
+}
+
+/* ─── Cards héros ────────────────────────────── */
+.liste-heros-container .heros {
+  position: relative;
+  overflow: hidden;
+  background-color: #1e1e1e !important;
+  border: 1px solid rgba(238, 99, 20, 0.25);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.liste-heros-container .heros:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.9), 0 0 0 1px rgba(238,99,20,0.4) !important;
+  border-color: rgba(238, 99, 20, 0.6);
+}
+
+/* Coin angulaire décoratif */
+.liste-heros-container .heros::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-bottom: 2px solid #ee6314;
+  border-right: 2px solid #ee6314;
+  border-radius: 0 0 12px 0;
+  opacity: 0.4;
+  transition: opacity 0.3s, width 0.3s, height 0.3s;
+}
+
+.liste-heros-container .heros:hover::after {
+  opacity: 1;
+  width: 50px;
+  height: 50px;
+}
+
+/* Image */
+.liste-heros-container .heros img {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.liste-heros-container .heros:hover img {
+  box-shadow: 0 0 20px rgba(238, 99, 20, 0.5);
+  transform: scale(1.05);
+}
+
+/* Badge classe */
+.liste-heros-container .heros .classe {
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  border-radius: 3px;
+  background: rgba(238, 99, 20, 0.15);
+  border: 1px solid rgba(238, 99, 20, 0.45);
+  color: #ee6314 !important;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Nom héros dans la card */
+.liste-heros-container .heros .nom {
+  font-family: 'Rajdhani', Georgia, serif;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff !important;
+}
+
+/* Description courte */
+.liste-heros-container .heros .description_courte {
+  color: #cccccc !important;
+  text-shadow: none;
+}
+
+/* Bouton dans les cards */
+.liste-heros-container .heros .bouton {
+  background-color: #ee6314 !important;
+  color: #111 !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.liste-heros-container .heros .bouton:hover {
+  background-color: #fff !important;
+  color: #ee6314 !important;
+}
+
+/* ─── Section CTA ────────────────────────────── */
+section.cta {
+  background-color: rgba(20, 20, 20, 0.96) !important;
+  border: 1px solid rgba(238, 99, 20, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+section.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(238,99,20,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+section.cta h2 {
+  font-family: 'Rajdhani', Georgia, serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ee6314 !important;
+  text-shadow: 0 0 16px rgba(238, 99, 20, 0.35);
+}
+
+section.cta p {
+  color: #e0e0e0 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* ─── Lien "Voir tous les héros" ─────────────── */
+.voir-tous {
+  font-family: 'Rajdhani', Georgia, serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #ffffff !important;
+  border-bottom: 2px solid #ee6314;
+  transition: color 0.2s, letter-spacing 0.2s;
+}
+
+.voir-tous:hover {
+  color: #ee6314 !important;
+  letter-spacing: 3px;
+}
